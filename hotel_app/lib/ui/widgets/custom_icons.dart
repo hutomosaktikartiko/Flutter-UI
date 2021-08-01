@@ -13,7 +13,7 @@ Icon iconPlace() => Icon(
       size: 15,
     );
 
-ImageIcon iconNotification() => ImageIcon(
-      AssetImage("assets/icons/icon_notification"),
-      size: 20,
+ImageIcon iconNotification(String iconName) => ImageIcon(
+      AssetImage("assets/icons/$iconName.png"),
+      size: 24,
     );
