@@ -6,4 +6,4 @@ TextStyle whiteTextStyle = TextStyle(color: Colors.white);
 TextStyle blackTextStyle = TextStyle(color: black);
 TextStyle greyTextStyle = TextStyle(color: grey);
 TextStyle grey2TextStyle = TextStyle(color: grey2);
-TextStyle orangTextStyle = TextStyle(color: orange);
+TextStyle orangeTextStyle = TextStyle(color: orange);

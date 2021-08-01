@@ -23,7 +23,7 @@ class CustomLabel extends StatelessWidget {
             : GestureDetector(
                 onTap: () => viewAllOnTap!(),
                 child: Text(
-                  "View All",
+                  "View all",
                   style: mainColor2TextStyle.copyWith(
                       fontSize: 12, fontWeight: FontWeight.w500),
                 ),

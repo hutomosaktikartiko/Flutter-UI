@@ -6,7 +6,6 @@ import 'package:hotel_app/models/hotel_model.dart';
 import 'package:hotel_app/ui/widgets/custom_box_shadow.dart';
 import 'package:hotel_app/ui/widgets/custom_icons.dart';
 import 'package:hotel_app/ui/widgets/custom_label.dart';
-import 'package:hotel_app/ui/widgets/custom_rating.dart';
 import 'package:hotel_app/ui/widgets/new_hotel_card.dart';
 import 'package:hotel_app/ui/widgets/recommended_card.dart';
 
@@ -66,7 +65,10 @@ class HomePage extends StatelessWidget {
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: newHotels.map((e) => NewHotelCard(e)).toList(),
+            children: newHotels.map((e) => Padding(
+              padding:  EdgeInsets.only(bottom: 12),
+              child: NewHotelCard(e),
+            )).toList(),
           ),
           SizedBox(
             height: 12,
