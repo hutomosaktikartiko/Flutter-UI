@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_app/config/custom_color.dart';
+import 'package:hotel_app/config/size_config.dart';
 import 'package:hotel_app/config/text_style.dart';
 import 'package:hotel_app/ui/pages/home_page.dart';
 import 'package:hotel_app/ui/pages/order_page.dart';
@@ -20,15 +21,16 @@ class _MainScreenState extends State<MainScreen> {
 
   List<BottomNavigationBarItem> bottomNavigatorBarItem = [
     BottomNavigationBarItem(
-        icon: iconNotification("icon_homes"), label: "Home"),
+        icon: iconNavigator("icon_homes",), label: "Home"),
     BottomNavigationBarItem(icon: Icon(Icons.search,), label: "Search"),
     BottomNavigationBarItem(icon: Icon(Icons.grid_view), label: "Order"),
     BottomNavigationBarItem(
-        icon: iconNotification("icon_profile"), label: "Profile"),
+        icon: iconNavigator("icon_profile"), label: "Profile"),
   ];
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       body: pages[currentTab],
       backgroundColor: backgroundColor,
