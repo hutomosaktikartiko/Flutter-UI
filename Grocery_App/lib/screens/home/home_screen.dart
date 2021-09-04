@@ -2,6 +2,9 @@ import 'package:animation_2/constants.dart';
 import 'package:animation_2/controllers/home_controller.dart';
 import 'package:animation_2/models/Product.dart';
 import 'package:animation_2/screens/deatils/details_screen.dart';
+import 'package:animation_2/screens/home/components/card_short_view.dart';
+import 'package:animation_2/screens/home/components/cart_details_view.dart';
+import 'package:animation_2/screens/home/components/cart_detailsview_card.dart';
 import 'package:flutter/material.dart';
 
 import 'components/header.dart';
@@ -71,15 +74,21 @@ class HomeScreen extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     PageRouteBuilder(
-                                      transitionDuration: const Duration(milliseconds: 500),
-                                      reverseTransitionDuration: const Duration(milliseconds: 500),
+                                        transitionDuration:
+                                            const Duration(milliseconds: 500),
+                                        reverseTransitionDuration:
+                                            const Duration(milliseconds: 500),
                                         pageBuilder: (context, animation,
                                                 secondaryAnimation) =>
                                             FadeTransition(
                                               opacity: animation,
                                               child: DetailsScreen(
-                                                  product:
-                                                      demo_products[index]),
+                                                product: demo_products[index],
+                                                onProdcutAdd: () {
+                                                  controller.addProductToCart(
+                                                      demo_products[index]);
+                                                },
+                                              ),
                                             )));
                               },
                             ),
@@ -97,7 +106,17 @@ class HomeScreen extends StatelessWidget {
                               : (constraints.maxHeight - cartBarHeight),
                           child: GestureDetector(
                             onVerticalDragUpdate: _onVerticalGesture,
-                            child: Container(color: Color(0xFFEAEAEA)),
+                            child: Container(
+                              padding: EdgeInsets.all(defaultPadding),
+                              alignment: Alignment.topLeft,
+                              color: Color(0xFFEAEAEA),
+                              child: AnimatedSwitcher(
+                                duration: panelTransition,
+                                child: controller.homeState == HomeState.normal
+                                    ? CardShowView(controller: controller)
+                                    : CartDetailsView(controller: controller),
+                              ),
+                            ),
                           )),
                       // Header
                       AnimatedPositioned(
