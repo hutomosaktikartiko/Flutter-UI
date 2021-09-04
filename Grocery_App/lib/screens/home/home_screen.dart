@@ -1,6 +1,7 @@
 import 'package:animation_2/constants.dart';
 import 'package:animation_2/controllers/home_controller.dart';
 import 'package:animation_2/models/Product.dart';
+import 'package:animation_2/screens/deatils/details_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'components/header.dart';
@@ -66,26 +67,37 @@ class HomeScreen extends StatelessWidget {
                             ),
                             itemBuilder: (context, index) => ProductCard(
                               product: demo_products[index],
-                              press: () {},
+                              press: () {
+                                Navigator.push(
+                                    context,
+                                    PageRouteBuilder(
+                                      transitionDuration: const Duration(milliseconds: 500),
+                                      reverseTransitionDuration: const Duration(milliseconds: 500),
+                                        pageBuilder: (context, animation,
+                                                secondaryAnimation) =>
+                                            FadeTransition(
+                                              opacity: animation,
+                                              child: DetailsScreen(
+                                                  product:
+                                                      demo_products[index]),
+                                            )));
+                              },
                             ),
                           ),
                         ),
                       ),
                       // Card Panel
                       AnimatedPositioned(
-                        duration: panelTransition,
+                          duration: panelTransition,
                           bottom: 0,
                           left: 0,
                           right: 0,
                           height: controller.homeState == HomeState.normal
                               ? cartBarHeight
-                              : (constraints.maxHeight -
-                                  cartBarHeight),
+                              : (constraints.maxHeight - cartBarHeight),
                           child: GestureDetector(
                             onVerticalDragUpdate: _onVerticalGesture,
-                            child: Container(
-                              color: Color(0xFFEAEAEA)
-                            ),
+                            child: Container(color: Color(0xFFEAEAEA)),
                           )),
                       // Header
                       AnimatedPositioned(

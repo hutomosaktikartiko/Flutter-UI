@@ -32,7 +32,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 Container(
                   width: double.infinity,
                   color: Color(0xFFF8F8F8),
-                  child: Image.asset(widget.product.image!),
+                  child: Hero(
+                    tag: widget.product.title!,
+                    child: Image.asset(widget.product.image!)),
                 ),
                 Positioned(
                   bottom: -20,
